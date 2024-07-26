@@ -11,7 +11,20 @@ except URLError as e:
 else:
     print("The server successfully found\n")
     bs = BeautifulSoup(html.read(),'lxml')
-    print(bs.body)
+
+    try:
+        paragraphOutput = bs.body.div
+    except AttributeError as e:
+        print("tag was not found\n")
+
+    else:
+        if(paragraphOutput == None):
+            print("tag was also not found")
+        else:
+            print(paragraphOutput)
+        
+
+
 
 
 
